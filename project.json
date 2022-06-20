@@ -1,0 +1,177 @@
+[{
+    "_id": {
+      "$oid": "615abdb6f5a7feaeda3681cc"
+    },
+    "name": "Blockchain",
+    "description": "Hien tai cong viec se la tim hieu va phat trien no thanh blockchain",
+    "position": "manager",
+    "team": "Blockchain",
+    "start_date": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "end_date_ex": {
+        "$date": {
+          "$numberLong": "1633334731099"
+        }
+      },
+    "end_date_real": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "progress":"50%",
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "61668a195d861b4c62483f72"
+    },
+    "name": "Kinh doanh",
+      
+    "description": "Mua ban chi co the o day",
+    "position": "manager",
+    "team": "Kinh doanh",
+    "start_date": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "end_date_ex": {
+        "$date": {
+          "$numberLong": "1633334731099"
+        }
+      },
+    "end_date_real": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "progress":"75%",
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "616693ccc32aefa165aa19c7"
+    },
+    "name": "Ke toan",
+    "description": "Moi thu lien quan den con so",
+    "position": "leader",
+    "team": "Ke toan",
+    "start_date": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "end_date_ex": {
+        "$date": {
+          "$numberLong": "1633334731099"
+        }
+      },
+    "end_date_real": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "progress":"25%",
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "6166faf7e68c8fabaa3cadd8"
+    },
+    "name": "Doanh thu",
+    "description": "Doanh thu cong ty",
+    "position": "manager",
+    "team": "Ke toan",
+    "start_date": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "end_date_ex": {
+        "$date": {
+          "$numberLong": "1633334731099"
+        }
+      },
+    "end_date_real": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "progress":"50%",
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "61670316e68c8fabaa3cadf3"
+    },
+    "name": "Game",  
+    "description": "Moi thu lien quan den game",
+    "position": "manager",
+    "team": "Support",
+    "start_date": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "end_date_ex": {
+        "$date": {
+          "$numberLong": "1633334731099"
+        }
+      },
+    "end_date_real": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "progress":"70%",
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "616703b9e68c8fabaa3cadf7"
+    },
+    "name": "function game",
+    "description": "tinh nang game",
+    "position": "Leader",
+    "team": "Game",
+    "start_date": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "end_date_ex": {
+        "$date": {
+          "$numberLong": "1633334731099"
+        }
+      },
+    "end_date_real": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "progress":"50%",
+    "__v": 0
+  },{
+    "_id": {
+      "$oid": "6167065fe68c8fabaa3cae05"
+    },
+    "name": "Marketing",
+    "description": "Dam me marketing",
+    "position": "manager",
+    "team": "Marketing",
+    "start_date": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "end_date_ex": {
+        "$date": {
+          "$numberLong": "1633334731099"
+        }
+      },
+    "end_date_real": {
+      "$date": {
+        "$numberLong": "1633334731099"
+      }
+    },
+    "progress":"50%",
+    "__v": 0
+  }]
