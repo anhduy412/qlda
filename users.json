@@ -1,0 +1,87 @@
+[{
+    "_id": "1",
+    "username":"king",
+    "password":"hashpassword",
+    "email":"manager@manager.com",
+    "name":"Tao thao duoi 1",
+    "isAuthenticated":true,
+    "phoneNumber":"0338278163",
+    "isSex":"male",
+    "position": "manager",
+    "team": "manager",
+    "dob": {
+        "$date": {
+          "$numberLong": "1634109972230"
+        }
+      },
+      "__v": 0
+},
+{
+    "_id": "2",
+    "username":"phatthai",
+    "password":"hashpassword1",
+    "email":"manager@manager.com",
+    "name":"Tao thao duoi 2",
+    "isAuthenticated":true,
+    "phoneNumber":"0338278785",
+    "isSex":"female",
+    "position": "manager",
+    "team": "manager",
+    "dob": {
+        "$date": {
+          "$numberLong": "1634112381416"
+        }
+      },
+      "__v": 0
+},{
+    "_id": "3",
+    "username":"thaiomdua",
+    "password":"thaiomdua",
+    "email":"thaiomdua@leader.com",
+    "name":"Tao thao duoi 3",
+    "isAuthenticated":true,
+    "phoneNumber":"0438278163",
+    "isSex":"male",
+    "position": "leader",
+    "team": "Ke toan",
+    "dob": {
+        "$date": {
+          "$numberLong": "1634112788919"
+        }
+      },
+      "__v": 0
+},{
+    "_id": "4",
+    "username":"kingmanhook",
+    "password":"kingmanhook",
+    "email":"kingmanhook@member.com",
+    "name":"Tao thao duoi 4",
+    "isAuthenticated":true,
+    "phoneNumber":"0338278193",
+    "isSex":"male",
+    "position": "member",
+    "team": "Ke toan",
+    "dob": {
+        "$date": {
+          "$numberLong": "1634109972230"
+        }
+      },
+      "__v": 0
+},{
+    "_id": "5",
+    "username":"hanasaki",
+    "password":"hanasaki",
+    "email":"hanasaki@member.com",
+    "name":"Tao thao duoi 5",
+    "isAuthenticated":true,
+    "phoneNumber":"0338276663",
+    "isSex":"female",
+    "position": "member",
+    "team": "BA",
+    "dob": {
+        "$date": {
+          "$numberLong": "1634112788919"
+        }
+      },
+      "__v": 0
+}]
