@@ -5,8 +5,9 @@ const inputFirstName = document.querySelector('#input-first-name');
 const inputLastName = document.querySelector('#input-last-name');
 const inputTeam = document.querySelector('#input-team');
 const inputPosition = document.querySelector('#input-position');
-const btnSaveEditProfile = document.querySelector('#btn-save-edit-profile');
-const btnEditProfileDiv = document.querySelector('#btn-edit-profile');
+// const btnSaveEditProfile = document.querySelector('#btn-save-edit-profile');
+const btnEditProfileDiv = document.querySelector('.btn-edit-profile-div-footer');
+
 btnEditProfile.addEventListener('click',() =>{
     inputUsername.readOnly = false;
     inputEmail.readOnly = false;
@@ -14,7 +15,8 @@ btnEditProfile.addEventListener('click',() =>{
     inputLastName.readOnly = false;
     inputTeam.readOnly = true;
     inputPosition.readOnly = true;
-    btnEditProfileDiv.style.display = 'block';
+    console.log(btnEditProfileDiv)
+    btnEditProfileDiv.innerHTML = '<button id="btn-save-edit-profile" class="btn btn-neutral">Lưu sự thay đổi </button>';
 })
 btnSaveEditProfile.addEventListener('click',() => {
     inputUsername.readOnly = true;
@@ -23,5 +25,5 @@ btnSaveEditProfile.addEventListener('click',() => {
     inputLastName.readOnly = true;
     inputTeam.readOnly = true;
     inputPosition.readOnly = true;
-    btnEditProfileDiv.style.display = 'none';
+    btnSaveEditProfile.remove();
 })
