@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="row g-3 needs-validation">
+    <div class="mb-3">
+        <label for="exampleInputNameWork" class="form-label">Công việc</label>
+        <input type="text" class="form-control" id="exampleInputNameWork" required placeholder="Công việc">
+        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+        <div class="valid-feedback">
+
+        </div>
+        <div class="invalid-feedback">
+            Vui lòng điền công việc tại đây!
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputDescriptionWork" class="form-label">Mô tả công việc</label>
+        <textarea class="form-control" placeholder="Mô tả dự án" id="exampleInputDescriptionWork"
+            style="height: 300px" required placeholder="Mô tả dự án"></textarea>
+        <div class="invalid-feedback">
+            Vui lòng điền mô tả công việc tại đây!
+        </div>
+        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+    </div>
+
+    <div class="mb-3">
+        <select class="form-select" aria-label="Phòng ban">
+            <option selected>Kế toán</option>
+            <option value="1">Blockchain</option>
+            <option value="2">Game</option>
+            <option value="2">Kinh doanh</option>
+        </select>
+        <div class="invalid-feedback">
+            Vui lòng chọn phòng ban
+        </div>
+    </div>
+    <div class="mb-3">
+        <select class="form-select" aria-label="Chức vụ">
+            <option selected>Nhân viên</option>
+            <option value="1">Trưởng ban</option>
+            <option value="2">Quản lý</option>
+        </select>
+        <div class="invalid-feedback">
+            Vui lòng chọn chức vụ công việc!
+        </div>
+        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+    </div>
+    div class="mb-3">
+        <label for="exampleInputStartWork" class="form-label">Ngày bắt đầu</label>
+        <input type="date" class="form-control" id="exampleInputStartWork" name="exampleInputStartWork">
+        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+    </div>
+    div class="mb-3">
+        <label for="exampleInputEndWork" class="form-label">Hạn hoàn thành trước</label>
+        <input type="date" class="form-control" id="exampleInputEndWork" name="exampleInputEndWork">
+        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputDeadlineWork" class="form-label">Hạn hoàn thành</label>
+        <input type="date" class="form-control" id="exampleInputDeadlineWork" name="exampleInputDeadlineWork">
+        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm công việc</button>
+</form>
+{% endblock %}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<style type="text/css" src="../static/assets/css/InputRangeProgress.css"></style>
 <form class="row g-3 needs-validation">
     <div class="mb-3">
         <label for="exampleInputNameProject" class="form-label">Tên dự án</label>
@@ -44,12 +45,12 @@
         </div>
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-    div class="mb-3">
+    <div class="mb-3">
         <label for="exampleInputStartProject" class="form-label">Ngày bắt đầu</label>
         <input type="date" class="form-control" id="exampleInputStartProject" name="exampleInputStartProject">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-    div class="mb-3">
+    <div class="mb-3">
         <label for="exampleInputEndProject" class="form-label">Hạn hoàn thành trước</label>
         <input type="date" class="form-control" id="exampleInputEndProject" name="exampleInputEndProject">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
@@ -58,6 +59,26 @@
         <label for="exampleInputDeadlineProject" class="form-label">Hạn hoàn thành</label>
         <input type="date" class="form-control" id="exampleInputDeadlineProject" name="exampleInputDeadlineProject">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
+    </div>
+    <div class="mb-3">
+        <input type="range" min="0" max="100" value="0" id="slider" name="sliderProgress" />
+        <div id="selector">
+            <div class="SelectBtn"></div>
+            <div id="SelectValue"></div>
+        </div>
+        <div id="ProgressBar"></div>
+        <script>
+            var slider = document.getElementById("slider");
+            var selector = document.getElementById("selector");
+            
+            SelectValue.innerHtml = slider.value;
+
+            slider.oninput = function(){
+                SelectValue.innerHTML = this.value;
+                selector.style.left = this.value + "%";
+                ProgressBar.style.width = this.value + "%";
+            }
+        </script>
     </div>
     <button type="submit" class="btn btn-primary">Thêm dự án</button>
 </form>

@@ -55,7 +55,11 @@ def login():
 # @app.route('/login1', methods=['GET', 'POST'])
 # def login1():
 #     return render_template('login-1.html')
+@app.route('/tables', methods=['GET', 'POST'])
+def tables():
+    return render_template('project-add.html')
 
+    
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     return render_template('register.html')
