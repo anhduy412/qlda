@@ -35,68 +35,141 @@ def page_not_found(e):
 def internal_error(e):
     return render_template('500.html'), 500
 
-# @app.before_request
-# def before_request():
-#     g.user = None
-#     if 'user_name' in session:
-#         if mydb.user.find_one({'username': session['user_name']}):
-#             g.user = mydb.user.find_one({'username': session['user_name']})
-#         elif mydb.supporters.find_one({'email': session['user_name']}):
-#             g.user = mydb.supporters.find_one({'email': session['user_name']})
-#         elif mydb.partners.find_one({'email': session['user_name']}):
-#             g.user = mydb.partners.find_one({'email': session['user_name']})
-#         elif mydb.clients.find_one({'email': session['user_name']}):
-#             g.user = mydb.clients.find_one({'email': session['user_name']})
+@app.before_request
+def before_request():
+    g.user = None
+    if 'username' in session:
+        if mydb.user.find_one({'username': session['username']}):
+            g.user = mydb.user.find_one({'username': session['username']})
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # error = None
+    # if request.method == 'POST':
+    #     session.pop('username', None)
+    #     username = request.form.get('username').strip()
+    #     password = request.form.get('password').strip()
+    #     if username == '':
+    #         error = "Tên người dùng không được để trống"
+    #         return render_template('login.html', error=error)
+    #     if password == '':
+    #         error = "Bạn vui lòng nhập mật khẩu đăng nhập"
+    #         return render_template('login.html', error=error)
+    #     current_user = mydb.user.find_one(
+    #         {'$or': [{'username': username}]})
+    #     if current_user:
+    #         if (api.verify_password(password, current_user.get('password'))):
+    #             session.permanent = True
+    #             session['user_name'] = current_user.get('email')
+    #             session['id'] = str(current_user.get('_id'))
+    #             return redirect(url_for('start'))
+    #         else:
+    #             error = "Sai tài khoản hoặc mật khẩu"
+    #             return render_template('login.html', error=error)
+    #     else:
+    #         error = "Sai tài khoản hoặc mật khẩu"
+    #         return render_template('login.html', error=error)
+    #     return render_template('login.html', error=error)
     return render_template('login.html')
 
-# @app.route('/login1', methods=['GET', 'POST'])
-# def login1():
-#     return render_template('login-1.html')
-@app.route('/tables', methods=['GET', 'POST'])
-def tables():
-    return render_template('project-edit.html')
-
-    
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
-
-# @app.route('/register1', methods=['GET', 'POST'])
-# def register1():
-#     return render_template('register-1.html')
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        name = request.form.get('name')
+        gender = request.form.get('gender')
+        phone = request.form.get('phone')
+        email = request.form.get('email')
+        position = request.form.get('position')
+        team = request.form.get('team')
+        insert_data = {
+            'username': username,
+            'password': password,
+            'name': name,
+            'gender': gender,
+            'phone': phone,
+            'email': email,
+            'position': position,
+            'team': team,
+        }
+        mydb.user.insert_one(insert_data)
+        return redirect(url_for('login'))
+    gender = [
+        {
+            'display_name': 'Nam',
+            'value': 'male',
+        },
+        {
+            'display_name': 'Nữ',
+            'value': 'Female',
+        },
+    ]
+    position = [
+        {
+            'display_name': 'Quản lý',
+            'value': 'manager',
+        },
+        {
+            'display_name': 'Trưởng ban',
+            'value': 'leader',
+        },
+        {
+            'display_name': 'Thành viên',
+            'value': 'member',
+        },
+    ]
+    team = [
+        {
+            'display_name': 'Lập trình',
+            'value': 'dev',
+        },
+        {
+            'display_name': 'Dữ liệu',
+            'value': 'data',
+        },
+        {
+            'display_name': 'Kinh doanh',
+            'value': 'sale',
+        },
+    ]
+    return render_template('register.html', gender=gender, position=position, team=team)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('index.html')
-
-# @app.route('/icons', methods=['GET', 'POST'])
-# def icons():
-#     return render_template('icons.html')
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('profile.html')
 
 @app.route('/profile/edit', methods=['GET', 'POST'])
 def profile_edit():
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('profile.html')
 
 @app.route('/project', methods=['GET', 'POST'])
 def project():
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('project.html')
 
 @app.route('/project/add', methods=['GET', 'POST'])
 def project_add():
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method ==  'POST':
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        team = request.POST.get('team')
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date_real')
-        progress = request.POST.get('progress')
+        name = request.form.get('name')
+        description = request.form.get('description')
+        team = request.form.get('team')
+        start_date = request.form.get('start_date')
+        end_date = request.form.get('end_date_real')
+        progress = request.form.get('progress')
         insert_data = {
             'name': name,
             'description': description,
@@ -111,15 +184,17 @@ def project_add():
 
 @app.route('/project/edit/<id>', methods=['GET', 'POST'])
 def project_edit():
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method ==  'POST':
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        team = request.POST.get('team')
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date_real')
-        progress = request.POST.get('progress')
+        name = request.form.get('name')
+        description = request.form.get('description')
+        team = request.form.get('team')
+        start_date = request.form.get('start_date')
+        end_date = request.form.get('end_date_real')
+        progress = request.form.get('progress')
         insert_data = {
-            '_id': ObjectId(request.POST.get('_id')),
+            '_id': ObjectId(request.form.get('_id')),
             'name': name,
             'description': description,
             'team': team,
@@ -133,22 +208,28 @@ def project_edit():
 
 @app.route('/project/delete/<id>', methods=['GET', 'POST'])
 def project_delete():
+    if not g.user:
+        return redirect(url_for('login'))
     # mydb.project.delete_one({'_id': ObjectId(_id)})
     return  render_template('project.html')
 
 @app.route('/work')
 def work():
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('work.html')
 
 @app.route('/work/add/<id>', methods=['GET', 'POST'])
 def work_create():
+    if not g.user:
+        return redirect(url_for('login'))
     if request.methods == 'POST':
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        team = request.POST.get('team')
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date_real')
-        progress = request.POST.get('progress')
+        name = request.form.get('name')
+        description = request.form.get('description')
+        team = request.form.get('team')
+        start_date = request.form.get('start_date')
+        end_date = request.form.get('end_date_real')
+        progress = request.form.get('progress')
         insert_data = {
             'name': name,
             'description': description,
@@ -163,13 +244,15 @@ def work_create():
 
 @app.route('/work/edit/<id>', methods=['GET', 'POST'])
 def work_edit():
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method ==  'POST':
-        name = request.POST.get('name')
-        description = request.POST.get('description')
-        team = request.POST.get('team')
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date_real')
-        progress = request.POST.get('progress')
+        name = request.form.get('name')
+        description = request.form.get('description')
+        team = request.form.get('team')
+        start_date = request.form.get('start_date')
+        end_date = request.form.get('end_date_real')
+        progress = request.form.get('progress')
         insert_data = {
             'name': name,
             'description': description,
@@ -184,10 +267,14 @@ def work_edit():
 
 @app.route('/work/delete/<id>', methods=['GET', 'POST'])
 def work_delete():
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('work.html')
 
 @app.route('/table', methods=['GET', 'POST'])
 def table():
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('table.html')
 
 if __name__ == '__main__':
