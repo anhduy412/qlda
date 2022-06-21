@@ -61,26 +61,6 @@
         <input type="date" class="form-control" id="exampleInputDeadlineProject" name="exampleInputDeadlineProject">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-    <div class="col-12 p-3 my-5">
-        <input type="range" min=0 max=100 value=50 id="slider" name="sliderProgress" />
-        <div id="selector">
-            <div class="SelectBtn"></div>
-            <div id="SelectValue"></div>
-        </div>
-        <div id="ProgressBar"></div>
-        <script>
-            var slider = document.getElementById("slider");
-            var selector = document.getElementById("selector");
-            
-            SelectValue.innerHtml = slider.value;
-
-            slider.oninput = function(){
-                SelectValue.innerHTML = this.value;
-                selector.style.left = this.value + "%";
-                ProgressBar.style.width = this.value + "%";
-            }
-        </script>
-    </div>
     <div class="col-12 p-3">
         <button type="submit" class="btn btn-primary">Thêm dự án</button>
     </div>

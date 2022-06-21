@@ -72,6 +72,14 @@ def login():
     #     return render_template('login.html', error=error)
     return render_template('login.html')
 
+# @app.route('/login1', methods=['GET', 'POST'])
+# def login1():
+#     return render_template('login-1.html')
+@app.route('/tables', methods=['GET', 'POST'])
+def tables():
+    return render_template('profile.html')
+
+    
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
