@@ -4,18 +4,19 @@
 
 {% block content %}
 
-<div class="header pb-6 d-flex align-items-center" 
-     style="min-height: 500px; background-image: url(/static/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pb-6 d-flex align-items-center"
+  style="min-height: 500px; background-image: url(/static/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
   <!-- Mask -->
   <span class="mask bg-gradient-default opacity-8"></span>
   <!-- Header container -->
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white"> 
+        <h1 class="display-2 text-white">
           <!-- Xin chào current_user.username  -->
         </h1>
-        <p class="text-white mt-0 mb-5">Đây là trang hồ sơ của bạn. Bạn có thể xem tiến độ bạn đã đạt được với công việc của mình và quản lý các dự án hoặc nhiệm vụ được giao</p>
+        <p class="text-white mt-0 mb-5">Đây là trang hồ sơ của bạn. Bạn có thể xem tiến độ bạn đã đạt được với công việc
+          của mình và quản lý các dự án hoặc nhiệm vụ được giao</p>
         <button id="btn-edit-profile" class="btn btn-neutral">Sửa hồ sơ cá nhân</button>
       </div>
     </div>
@@ -25,7 +26,7 @@
 <div class="container-fluid mt--6">
   <div class="row">
     <div class="col-xl-4 order-xl-2">
-      
+
     </div>
     <div class="col-xl-8 order-xl-1">
       <div class="card">
@@ -44,7 +45,8 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Tên đăng nhập</label>
-                    <input type="text" id="input-username" class="form-control" placeholder="Username" value="" readonly> Duy
+                    <input type="text" id="input-username" class="form-control" placeholder="Username" value=""
+                      readonly> Duy
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -58,13 +60,15 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-first-name">Họ </label>
-                    <input type="text" id="input-first-name" class="form-control" placeholder="First name" value="" readonly>
+                    <input type="text" id="input-first-name" class="form-control" placeholder="First name" value=""
+                      readonly>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-last-name">Tên</label>
-                    <input type="text" id="input-last-name" class="form-control" placeholder="Last name" value="" readonly>
+                    <input type="text" id="input-last-name" class="form-control" placeholder="Last name" value=""
+                      readonly>
                   </div>
                 </div>
               </div>
@@ -76,16 +80,24 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-team">Phòng ban</label>
-                    <input id="input-team" class="form-control" placeholder="Phòng ban" value=" " type="text" readonly>
+                    <label>Phòng ban</label>
+                    <select class="form-control" name="team" id="team">
+                      {%for team in team %}
+                      <option value="{{team.value}}">{{team.display_name}}</option>
+                      {% endfor %}
+                    </select>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-position">Chức vụ</label>
-                    <input type="text" id="input-position" class="form-control" placeholder="Chức vụ" value="" readonly>
+                    <label>Vị trí</label>
+                    <select class="form-control" name="position" id="position">
+                      {%for position in position %}
+                      <option value="{{position.value}}">{{position.display_name}}</option>
+                      {% endfor %}
+                    </select>
                   </div>
                 </div>
               </div>
@@ -96,11 +108,12 @@
             <div class="pl-lg-4">
               <div class="form-group">
                 <label class="form-control-label">Thông tin trạng thái của tôi</label>
-                <textarea rows="4" class="form-control" placeholder="Hãy viết một vài câu vào đây để lan tỏa đến mọi người ..."></textarea>
+                <textarea rows="4" class="form-control"
+                  placeholder="Hãy viết một vài câu vào đây để lan tỏa đến mọi người ..."></textarea>
               </div>
             </div>
             <div class="btn-edit-profile-div-footer">
-              
+
             </div>
 
           </form>
@@ -115,5 +128,5 @@
 
 {% endblock content %}
 
-<!-- Specific JS goes HERE --> 
+<!-- Specific JS goes HERE -->
 {% block javascripts %}{% endblock javascripts %}
