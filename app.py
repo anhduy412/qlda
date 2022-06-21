@@ -107,7 +107,7 @@ def project_add():
             }
         mydb.project.insert_one(insert_data)
         return redirect(url_for('project'))
-    return render_template('project_add.html')
+    return render_template('project-add.html')
 
 @app.route('/project/edit/<id>', methods=['GET', 'POST'])
 def project_edit():
