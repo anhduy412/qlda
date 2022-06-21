@@ -9,12 +9,12 @@ const inputPosition = document.querySelector('#input-position');
 const btnEditProfileDiv = document.querySelector('.btn-edit-profile-div-footer');
 
 btnEditProfile.addEventListener('click',() =>{
-    inputUsername.readOnly = false;
+    inputUsername.readOnly = true;
     inputEmail.readOnly = false;
     inputFirstName.readOnly = false;
     inputLastName.readOnly = false;
-    inputTeam.readOnly = true;
-    inputPosition.readOnly = true;
+    inputTeam.readOnly = false;
+    inputPosition.readOnly = false;
     console.log(btnEditProfileDiv)
     btnEditProfileDiv.innerHTML = '<button id="btn-save-edit-profile" class="btn btn-neutral">Lưu sự thay đổi </button>';
 })
