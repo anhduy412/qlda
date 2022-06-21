@@ -1,5 +1,6 @@
 import datetime
 import sys
+from colorama import reinit
 from flask import (
     Flask,
     g,
@@ -12,6 +13,7 @@ from flask import (
     send_file,
     abort,
 )
+from pymongo import ReturnDocument
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secretkeyhere'
@@ -28,33 +30,69 @@ def page_not_found(e):
 def internal_error(e):
     return render_template('500.html'), 500
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
 
-@app.route('/login1')
+@app.route('/login1', methods=['GET', 'POST'])
 def login1():
     return render_template('login-1.html')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     return render_template('register.html')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register1():
     return render_template('register-1.html')
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
-@app.route('/icons')
+@app.route('/icons', methods=['GET', 'POST'])
 def icons():
     return render_template('icons.html')
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
     return render_template('profile.html')
+
+@app.route('/profile/edit', methods=['GET', 'POST'])
+def profile_edit():
+    return render_template('profile.html')
+
+@app.route('/project', methods=['GET', 'POST'])
+def project():
+    return render_template('project.html')
+
+@app.route('/project/add', methods=['GET', 'POST'])
+def project_add():
+    return render_template('project.html')
+
+@app.route('/project/edit/<id>', methods=['GET', 'POST'])
+def project_edit():
+    return render_template('project.html')
+
+@app.route('/project/delete/<id>', methods=['GET', 'POST'])
+def project_delete():
+    return  render_template('project.html')
+
+@app.route('/work')
+def work():
+    return render_template('work.html')
+
+@app.route('/work/add/<id>', methods=['GET', 'POST'])
+def work_create():
+    return render_template('work.html')
+
+@app.route('/work/edit/<id>', methods=['GET', 'POST'])
+def work_edit():
+    return render_template('work.html')
+
+@app.route('/work/delete/<id>', methods=['GET', 'POST'])
+def work_delete():
+    return render_template('work.html')
 
 if __name__ == '__main__':
     if 'local' in sys.argv:
