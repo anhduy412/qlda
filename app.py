@@ -57,7 +57,7 @@ def login():
 #     return render_template('login-1.html')
 @app.route('/tables', methods=['GET', 'POST'])
 def tables():
-    return render_template('project-edit.html')
+    return render_template('profile.html')
 
     
 @app.route('/register', methods=['GET', 'POST'])
