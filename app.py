@@ -35,18 +35,18 @@ def page_not_found(e):
 def internal_error(e):
     return render_template('500.html'), 500
 
-@app.before_request
-def before_request():
-    g.user = None
-    if 'user_name' in session:
-        if mydb.user.find_one({'username': session['user_name']}):
-            g.user = mydb.user.find_one({'username': session['user_name']})
-        elif mydb.supporters.find_one({'email': session['user_name']}):
-            g.user = mydb.supporters.find_one({'email': session['user_name']})
-        elif mydb.partners.find_one({'email': session['user_name']}):
-            g.user = mydb.partners.find_one({'email': session['user_name']})
-        elif mydb.clients.find_one({'email': session['user_name']}):
-            g.user = mydb.clients.find_one({'email': session['user_name']})
+# @app.before_request
+# def before_request():
+#     g.user = None
+#     if 'user_name' in session:
+#         if mydb.user.find_one({'username': session['user_name']}):
+#             g.user = mydb.user.find_one({'username': session['user_name']})
+#         elif mydb.supporters.find_one({'email': session['user_name']}):
+#             g.user = mydb.supporters.find_one({'email': session['user_name']})
+#         elif mydb.partners.find_one({'email': session['user_name']}):
+#             g.user = mydb.partners.find_one({'email': session['user_name']})
+#         elif mydb.clients.find_one({'email': session['user_name']}):
+#             g.user = mydb.clients.find_one({'email': session['user_name']})
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -129,7 +129,7 @@ def project_edit():
 
 @app.route('/project/delete/<id>', methods=['GET', 'POST'])
 def project_delete():
-    mydb.project.delete_one({'_id': ObjectId(_id)})
+    # mydb.project.delete_one({'_id': ObjectId(_id)})
     return  render_template('project.html')
 
 @app.route('/work')
@@ -138,7 +138,7 @@ def work():
 
 @app.route('/work/add/<id>', methods=['GET', 'POST'])
 def work_create():
-    if methods == 'POST':
+    if request.methods == 'POST':
         name = request.POST.get('name')
         description = request.POST.get('description')
         team = request.POST.get('team')
@@ -181,6 +181,10 @@ def work_edit():
 @app.route('/work/delete/<id>', methods=['GET', 'POST'])
 def work_delete():
     return render_template('work.html')
+
+@app.route('/table', methods=['GET', 'POST'])
+def table():
+    return render_template('table.html')
 
 if __name__ == '__main__':
     if 'local' in sys.argv:

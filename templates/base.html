@@ -22,10 +22,11 @@
 
   <!-- Specific CSS goes HERE -->
   {% block stylesheets %}{% endblock stylesheets %}
+  {% include "navigation.html" %}
 
 </head>
-
-<body class="">
+<body>
+  {% include "sidenav.html" %}
 
 
   <div class="main-content" id="panel">
