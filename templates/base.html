@@ -22,7 +22,7 @@
 
   <!-- Specific CSS goes HERE -->
   {% block stylesheets %}{% endblock stylesheets %}
-  {% include "navigation.html" %}
+
 
 </head>
 <body>
@@ -30,7 +30,7 @@
 
 
   <div class="main-content" id="panel">
-
+    {% include "navigation.html" %}
 
     {% block content %}{% endblock content %}
 
