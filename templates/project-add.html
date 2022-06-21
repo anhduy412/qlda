@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<style type="text/css" src="../static/assets/css/InputRangeProgress.css"></style>
-<form class="needs-validation">
-    <div class="mb-3">
+
+<form class="needs-validation container mx-5 my-3 p-20 rounded-3">
+    <div class="col-12 p-3">
         <label for="exampleInputNameProject" class="form-label">Tên dự án</label>
         <input type="text" class="form-control" id="exampleInputNameProject" required placeholder="Tên dự án">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
@@ -13,7 +13,7 @@
             Vui lòng điền tên dự án tại đây!
         </div>
     </div>
-    <div class="mb-3">
+    <div class="col-12 p-3">
         <label for="exampleInputDescriptionProject" class="form-label">Mô tả dự án</label>
         <textarea class="form-control" placeholder="Mô tả dự án" id="exampleInputDescriptionProject"
             style="height: 300px" required placeholder="Mô tả dự án"></textarea>
@@ -23,8 +23,9 @@
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
 
-    <div class="mb-3">
-        <select class="form-select" aria-label="Phòng ban">
+    <div class="col-12 p-3">
+        <label for="exampleInputTeamProject" class="form-label">Chọn phòng ban</label>
+        <select  id="exampleInputTeamProject" class="form-select" aria-label="Phòng ban">
             <option selected>Kế toán</option>
             <option value="1">Blockchain</option>
             <option value="2">Game</option>
@@ -34,7 +35,7 @@
             Vui lòng chọn phòng ban
         </div>
     </div>
-    <div class="mb-3">
+    <div class="col-12 p-3">
         <select class="form-select" aria-label="Chức vụ">
             <option selected>Nhân viên</option>
             <option value="1">Trưởng ban</option>
@@ -45,23 +46,23 @@
         </div>
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-    <div class="mb-3">
+    <div class="col-12 p-3">
         <label for="exampleInputStartProject" class="form-label">Ngày bắt đầu</label>
         <input type="date" class="form-control" id="exampleInputStartProject" name="exampleInputStartProject">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-    <div class="mb-3">
+    <div class="col-12 p-3">
         <label for="exampleInputEndProject" class="form-label">Hạn hoàn thành trước</label>
         <input type="date" class="form-control" id="exampleInputEndProject" name="exampleInputEndProject">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-    <div class="mb-3">
+    <div class="col-12 p-3">
         <label for="exampleInputDeadlineProject" class="form-label">Hạn hoàn thành</label>
         <input type="date" class="form-control" id="exampleInputDeadlineProject" name="exampleInputDeadlineProject">
         <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-    <div class="mb-3">
-        <input type="range" min="0" max="100" value="0" id="slider" name="sliderProgress" />
+    <div class="col-12 p-3 my-5">
+        <input type="range" min=0 max=100 value=50 id="slider" name="sliderProgress" />
         <div id="selector">
             <div class="SelectBtn"></div>
             <div id="SelectValue"></div>
@@ -80,6 +81,9 @@
             }
         </script>
     </div>
-    <button type="submit" class="btn btn-primary">Thêm dự án</button>
+    <div class="col-12 p-3">
+        <button type="submit" class="btn btn-primary">Thêm dự án</button>
+    </div>
+   
 </form>
 {% endblock %}

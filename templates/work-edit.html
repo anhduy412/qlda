@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <form class="needs-validation container mx-5 my-3 p-20 rounded-3">
     <div class="col-12 p-3">
         <label for="exampleInputNameWork" class="form-label">Tên công việc</label>
@@ -34,7 +33,8 @@
         </div>
     </div>
     <div class="col-12 p-3">
-        <select class="form-select" aria-label="Phòng ban">
+        <label for="exampleInputTeamWork" class="form-label">Chọn phòng ban</label>
+        <select  id="exampleInputTeamWork" class="form-select" aria-label="Phòng ban">
             <option selected>Kế toán</option>
             <option value="1">Blockchain</option>
             <option value="2">Game</option>
@@ -45,7 +45,8 @@
         </div>
     </div>
     <div class="col-12 p-3">
-        <select class="form-select" aria-label="Chức vụ">
+        <label for="exampleInputPositionWork" class="form-label">Chọn chức vụ</label>
+        <select  id="exampleInputPositionWork" class="form-select" aria-label="Chức vụ">
             <option selected>Nhân viên</option>
             <option value="1">Trưởng ban</option>
             <option value="2">Quản lý</option>
@@ -56,14 +57,14 @@
         <!-- <div id="nameWorkHelp" class="form-text"></div> -->
     </div>
     <div class="col-12 p-3">
-        <label for="exampleInputStartWork" class="form-label">Ngày bắt đầu</label>
-        <input type="date" class="form-control" id="exampleInputStartWork" name="exampleInputStartWork">
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+    <label for="exampleInputStartWork" class="form-label">Ngày bắt đầu</label>
+    <input type="date" class="form-control" id="exampleInputStartWork" name="exampleInputStartWork">
+    <!-- <div id="nameWorkHelp" class="form-text"></div> -->
     </div>
     <div class="col-12 p-3">
-        <label for="exampleInputEndWork" class="form-label">Hạn hoàn thành trước</label>
-        <input type="date" class="form-control" id="exampleInputEndWork" name="exampleInputEndWork">
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+    <label for="exampleInputEndWork" class="form-label">Hạn hoàn thành trước</label>
+    <input type="date" class="form-control" id="exampleInputEndWork" name="exampleInputEndWork">
+    <!-- <div id="nameWorkHelp" class="form-text"></div> -->
     </div>
     <div class="col-12 p-3">
         <label for="exampleInputDeadlineWork" class="form-label">Hạn hoàn thành</label>
@@ -71,7 +72,7 @@
         <!-- <div id="nameWorkHelp" class="form-text"></div> -->
     </div>
     <div class="col-12 p-3 my-5">
-        <input type="range" min="0" max="100" value="50" id="slider" name="sliderProgress" />
+        <input type="range" min=0 max=100 value=50 id="slider" name="sliderProgress" />
         <div id="selector">
             <div class="SelectBtn"></div>
             <div id="SelectValue"></div>
@@ -90,9 +91,29 @@
             }
         </script>
     </div>
-    <div class="col-12 p-3">
-        <button type="submit" class="btn btn-primary">Thêm công việc</button>
+    <div class="col-12 p-3 my-5">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+            Lưu sự thay đổi
+        </button>
     </div>
-   
+
 </form>
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span>Bạn có chắc chắn muốn lưu sự thay đổi không ?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                <button type="button" class="btn btn-danger">Chắc chắn</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
