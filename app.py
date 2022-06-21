@@ -35,12 +35,12 @@ def page_not_found(e):
 def internal_error(e):
     return render_template('500.html'), 500
 
-@app.before_request
-def before_request():
-    g.user = None
-    if 'username' in session:
-        if mydb.user.find_one({'username': session['username']}):
-            g.user = mydb.user.find_one({'username': session['username']})
+# @app.before_request
+# def before_request():
+#     g.user = None
+#     if 'username' in session:
+#         if mydb.user.find_one({'username': session['username']}):
+#             g.user = mydb.user.find_one({'username': session['username']})
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -145,32 +145,32 @@ def register():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     return render_template('index.html')
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     return render_template('profile.html')
 
 @app.route('/profile/edit', methods=['GET', 'POST'])
 def profile_edit():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     return render_template('profile.html')
 
 @app.route('/project', methods=['GET', 'POST'])
 def project():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     return render_template('project.html')
 
 @app.route('/project/add', methods=['GET', 'POST'])
 def project_add():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     if request.method ==  'POST':
         name = request.form.get('name')
         description = request.form.get('description')
@@ -192,8 +192,8 @@ def project_add():
 
 @app.route('/project/edit/<id>', methods=['GET', 'POST'])
 def project_edit():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     if request.method ==  'POST':
         name = request.form.get('name')
         description = request.form.get('description')
@@ -216,21 +216,21 @@ def project_edit():
 
 @app.route('/project/delete/<id>', methods=['GET', 'POST'])
 def project_delete():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     # mydb.project.delete_one({'_id': ObjectId(_id)})
     return  render_template('project.html')
 
 @app.route('/work')
 def work():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     return render_template('work.html')
 
 @app.route('/work/add/<id>', methods=['GET', 'POST'])
 def work_create():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     if request.methods == 'POST':
         name = request.form.get('name')
         description = request.form.get('description')
@@ -252,8 +252,8 @@ def work_create():
 
 @app.route('/work/edit/<id>', methods=['GET', 'POST'])
 def work_edit():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     if request.method ==  'POST':
         name = request.form.get('name')
         description = request.form.get('description')
@@ -275,14 +275,14 @@ def work_edit():
 
 @app.route('/work/delete/<id>', methods=['GET', 'POST'])
 def work_delete():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     return render_template('work.html')
 
 @app.route('/table', methods=['GET', 'POST'])
 def table():
-    if not g.user:
-        return redirect(url_for('login'))
+    # if not g.user:
+    #     return redirect(url_for('login'))
     return render_template('table.html')
 
 if __name__ == '__main__':
