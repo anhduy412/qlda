@@ -17,7 +17,7 @@ btnEditProfile.addEventListener('click',() =>{
     inputTeam.disabled = false;
     inputPosition.disabled = false;
     inputGender.disabled = false;
-    btnEditProfileDiv.innerHTML = '<button id="btn-save-edit-profile" class="btn btn-neutral">Lưu sự thay đổi </button>';
+    btnEditProfileDiv.innerHTML = '<button type="submit" id="btn-save-edit-profile" class="btn btn-neutral">Lưu sự thay đổi </button>';
 })
 btnSaveEditProfile.addEventListener('click',() => {
     inputUsername.readOnly = true;
