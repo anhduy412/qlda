@@ -39,8 +39,8 @@ def internal_error(e):
 def before_request():
     g.user = None
     if 'username' in session:
-        if mydb.user.find_one({'username': session['username']}):
-            g.user = mydb.user.find_one({'username': session['username']})
+        if mydb.clients.find_one({'email': session['username']}):
+            g.user = mydb.clients.find_one({'email': session['user_name']})
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -137,16 +137,16 @@ def register():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 # @app.route('/profile/<id>', methods=['GET', 'POST'])
 # def profile(user_id):
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method == 'POST':
         password = request.form.get('password')
         gender = request.form.get('gender')
@@ -205,8 +205,8 @@ def profile():
 
 @app.route('/project', methods=['GET', 'POST'])
 def project():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     filter = {
 
     }
@@ -238,8 +238,8 @@ def project():
 
 @app.route('/project/add', methods=['GET', 'POST'])
 def project_add():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method == 'POST':
         name = request.form.get('name')
         description = request.form.get('description')
@@ -274,8 +274,8 @@ def project_add():
 
 @app.route('/project/edit/<id>', methods=['GET', 'POST'])
 def project_edit(project_id):
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method ==  'POST':
         name = request.form.get('name')
         description = request.form.get('description')
@@ -297,16 +297,16 @@ def project_edit(project_id):
 
 @app.route('/project/delete/<id>', methods=['GET', 'POST'])
 def project_delete(project_id):
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     # mydb.project.delete_one({'_id': ObjectId(_id)})
     mydb.project.delete_one({'_id': ObjectId(project_id)})
     return  render_template('project.html')
 
 @app.route('/work')
 def work():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     filter = {
 
     }
@@ -340,8 +340,8 @@ def work():
 
 @app.route('/work/add', methods=['GET', 'POST'])
 def work_create():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method == 'POST':
         name = request.form.get('name')
         project_name = request.form.get('project_name')
@@ -377,8 +377,8 @@ def work_create():
 
 @app.route('/work/edit/<id>', methods=['GET', 'POST'])
 def work_edit():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     if request.method ==  'POST':
         name = request.form.get('name')
         description = request.form.get('description')
@@ -400,15 +400,9 @@ def work_edit():
 
 @app.route('/work/delete/<id>', methods=['GET', 'POST'])
 def work_delete():
-    # if not g.user:
-    #     return redirect(url_for('login'))
+    if not g.user:
+        return redirect(url_for('login'))
     return render_template('work.html')
-
-@app.route('/table', methods=['GET', 'POST'])
-def table():
-    # if not g.user:
-    #     return redirect(url_for('login'))
-    return render_template('table.html')
 
 @app.route('/logout', methods=['GET'])
 def logout():
