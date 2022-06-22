@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
+{% block title %}Thêm dự án{% endblock%}
 {% block content %}
-
-<form class="needs-validation container mx-5 my-3 p-20 rounded-3">
+<form class="needs-validation container mx-5 my-3 p-20 rounded-3" method="POST">
     <div class="col-12 p-3">
         <label for="exampleInputNameProject" class="form-label">Tên dự án</label>
-        <input type="text" class="form-control" id="exampleInputNameProject" required placeholder="Tên dự án">
-        <!-- <div id="nameProjectHelp" class="form-text"></div> -->
+        <input type="text" class="form-control" id="exampleInputNameProject" name="name" required placeholder="Tên dự án">
         <div class="valid-feedback">
-
         </div>
         <div class="invalid-feedback">
             Vui lòng điền tên dự án tại đây!
@@ -20,50 +18,30 @@
         <div class="invalid-feedback">
             Vui lòng điền mô tả dự án tại đây!
         </div>
-        <!-- <div id="nameProjectHelp" class="form-text"></div> -->
     </div>
-
     <div class="col-12 p-3">
-        <label for="exampleInputTeamProject" class="form-label">Chọn phòng ban</label>
-        <select  id="exampleInputTeamProject" class="form-select" aria-label="Phòng ban">
-            <option selected>Kế toán</option>
-            <option value="1">Blockchain</option>
-            <option value="2">Game</option>
-            <option value="2">Kinh doanh</option>
-        </select>
+        <label for="exampleInputTeamProject" class="form-label">Phòng ban</label>
+        <div class="form-group">
+            <select class="form-control" name="team" id="team">
+                {%for team in team %}
+                    <option value="{{team.value}}">{{team.display_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div class="invalid-feedback">
             Vui lòng chọn phòng ban
         </div>
     </div>
     <div class="col-12 p-3">
-        <select class="form-select" aria-label="Chức vụ">
-            <option selected>Nhân viên</option>
-            <option value="1">Trưởng ban</option>
-            <option value="2">Quản lý</option>
-        </select>
-        <div class="invalid-feedback">
-            Vui lòng chọn chức vụ dự án!
-        </div>
-        <!-- <div id="nameProjectHelp" class="form-text"></div> -->
-    </div>
-    <div class="col-12 p-3">
         <label for="exampleInputStartProject" class="form-label">Ngày bắt đầu</label>
-        <input type="date" class="form-control" id="exampleInputStartProject" name="exampleInputStartProject">
-        <!-- <div id="nameProjectHelp" class="form-text"></div> -->
+        <input type="date" class="form-control" id="exampleInputStartProject" name="start_date">
     </div>
     <div class="col-12 p-3">
-        <label for="exampleInputEndProject" class="form-label">Hạn hoàn thành trước</label>
-        <input type="date" class="form-control" id="exampleInputEndProject" name="exampleInputEndProject">
-        <!-- <div id="nameProjectHelp" class="form-text"></div> -->
-    </div>
-    <div class="col-12 p-3">
-        <label for="exampleInputDeadlineProject" class="form-label">Hạn hoàn thành</label>
-        <input type="date" class="form-control" id="exampleInputDeadlineProject" name="exampleInputDeadlineProject">
-        <!-- <div id="nameProjectHelp" class="form-text"></div> -->
+        <label for="exampleInputEndProject" class="form-label">Hạn hoàn thành</label>
+        <input type="date" class="form-control" id="exampleInputEndProject" name="end_date">
     </div>
     <div class="col-12 p-3">
         <button type="submit" class="btn btn-primary">Thêm dự án</button>
     </div>
-   
 </form>
 {% endblock %}

@@ -1,78 +1,46 @@
 {% extends 'base.html' %}
+{% block title %}Thêm công việc{% endblock%}
 {% block content %}
-
-<form class="needs-validation container mx-5 my-3 p-20 rounded-3">
+<form class="needs-validation container mx-5 my-3 p-20 rounded-3" method="POST">
     <div class="col-12 p-3">
-        <label for="exampleInputNameWork" class="form-label">Tên công việc</label>
-        <input type="text" class="form-control" id="exampleInputNameWork" required placeholder="Tên công việc">
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
-        <div class="valid-feedback">
-
-        </div>
-        <div class="invalid-feedback">
-            Vui lòng điền tên công việc tại đây!
-        </div>
+        <label for="exampleInputNameProject" class="form-label">Tên công việc</label>
+        <input type="text" class="form-control" id="exampleInputNameProject" name="name" required placeholder="Tên công việc">
     </div>
     <div class="col-12 p-3">
-        <label for="exampleInputDescriptionWork" class="form-label">Mô tả công việc</label>
-        <textarea class="form-control" placeholder="Mô tả công việc" id="exampleInputDescriptionWork"
+        <label for="exampleInputNameProject" class="form-label">Tên dự án</label>
+        <input type="text" class="form-control" id="exampleInputNameProject" name="name" required placeholder="Tên dự án">
+    </div>
+    <div class="col-12 p-3">
+        <label for="exampleInputDescriptionProject" class="form-label">Mô tả công việc</label>
+        <textarea class="form-control" placeholder="Mô tả công việc" id="exampleInputDescriptionProject"
             style="height: 300px" required placeholder="Mô tả công việc"></textarea>
         <div class="invalid-feedback">
             Vui lòng điền mô tả công việc tại đây!
         </div>
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
     </div>
     <div class="col-12 p-3">
-        <select class="form-select" aria-label="Tên dự án">
-            <option selected>Dự án 1</option>
-            <option value="1">Dự án 2</option>
-            <option value="2">Dự án 3</option>
-            <option value="2">Dự án 4</option>
-        </select>
+        <label for="exampleInputTeamProject" class="form-label">Phòng ban</label>
+        <div class="form-group">
+            <select class="form-control" name="team" id="team">
+                {%for team in team %}
+                    <option value="{{team.value}}">{{team.display_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div class="invalid-feedback">
             Vui lòng chọn phòng ban
         </div>
     </div>
     <div class="col-12 p-3">
-        <select class="form-select" aria-label="Phòng ban">
-            <option selected>Kế toán</option>
-            <option value="1">Blockchain</option>
-            <option value="2">Game</option>
-            <option value="2">Kinh doanh</option>
-        </select>
-        <div class="invalid-feedback">
-            Vui lòng chọn phòng ban
-        </div>
+        <label for="exampleInputStartProject" class="form-label">Ngày bắt đầu</label>
+        <input type="date" class="form-control" id="exampleInputStartProject" name="start_date">
     </div>
     <div class="col-12 p-3">
-        <select class="form-select" aria-label="Chức vụ">
-            <option selected>Nhân viên</option>
-            <option value="1">Trưởng ban</option>
-            <option value="2">Quản lý</option>
-        </select>
-        <div class="invalid-feedback">
-            Vui lòng chọn chức vụ công việc!
-        </div>
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
-    </div>
-    <div class="col-12 p-3">
-        <label for="exampleInputStartWork" class="form-label">Ngày bắt đầu</label>
-        <input type="date" class="form-control" id="exampleInputStartWork" name="exampleInputStartWork">
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
-    </div>
-    <div class="col-12 p-3">
-        <label for="exampleInputEndWork" class="form-label">Hạn hoàn thành trước</label>
-        <input type="date" class="form-control" id="exampleInputEndWork" name="exampleInputEndWork">
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
-    </div>
-    <div class="col-12 p-3">
-        <label for="exampleInputDeadlineWork" class="form-label">Hạn hoàn thành</label>
-        <input type="date" class="form-control" id="exampleInputDeadlineWork" name="exampleInputDeadlineWork">
-        <!-- <div id="nameWorkHelp" class="form-text"></div> -->
+        <label for="exampleInputEndProject" class="form-label">Hạn hoàn thành</label>
+        <input type="date" class="form-control" id="exampleInputEndProject" name="end_date">
     </div>
     <div class="col-12 p-3">
         <button type="submit" class="btn btn-primary">Thêm công việc</button>
     </div>
-   
 </form>
 {% endblock %}
