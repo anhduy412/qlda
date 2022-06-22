@@ -1,4 +1,3 @@
-import datetime
 import sys
 from flask import (
     Flask,
@@ -7,10 +6,7 @@ from flask import (
     render_template,
     request,
     session,
-    sessions,
     url_for,
-    send_file,
-    abort,
 )
 import pymongo
 from bson.objectid import ObjectId
@@ -69,7 +65,6 @@ def login():
         else:
             error = "Sai tài khoản hoặc mật khẩu"
             return render_template('login.html', error=error)
-        return render_template('login.html', error=error)
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
